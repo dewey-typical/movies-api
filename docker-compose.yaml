@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://admin:adminadmin@postgres/tp
+    ports:
+      - 8000:8000
+  postgres:
+    image: totofunku/api-pg-cours
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=adminadmin
+    ports:
+      - 5432:5432
+    volumes:
+      - /data:/var/lib/postgresql/data
